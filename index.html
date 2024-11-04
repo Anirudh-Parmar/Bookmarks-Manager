@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,14 +7,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Bookmark Manager</h1>
-        <input type="text" id="search" placeholder="Search bookmarks...">
-        <button id="addBookmarkBtn">Add Bookmark</button>
-    </header>
-    <main>
-        <div id="bookmarkList"></div>
-    </main>
-    <script src="script.js"></script>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Folders</h2>
+            </div>
+            <div class="folder-list">
+                <!-- Folders will be dynamically added here -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Bookmarks Manager</h1>
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="search-bar">
+                    <input type="search" id="search" placeholder="Search bookmarks...">
+                </div>
+                <div class="import-section">
+                    <input type="file" id="bookmarkFile" accept=".html" class="file-input">
+                    <label for="bookmarkFile" class="import-btn">Import Bookmarks</label>
+                </div>
+            </div>
+
+            <!-- Bookmarks Display Area -->
+            <div class="bookmarks-container">
+                <!-- Bookmarks will be dynamically added here -->
+            </div>
+        </main>
+    </div>
+
+    <script src="parser.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
