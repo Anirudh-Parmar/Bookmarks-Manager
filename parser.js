@@ -43,7 +43,7 @@ function parseBookmarksFile(htmlContent){
 
 }
 
-function readBookmarksFile(file){
+async function readBookmarksFile(file){
     //Returns a Promise for async operation
     return new Promise ((resolve,reject)=>{
         //Handles file reading using FileReader
@@ -55,12 +55,17 @@ function readBookmarksFile(file){
              const bookmarks = parseBookmarksFile(e.target.result);
              resolve(bookmarks)
             } catch (error) {
-                reject(error)
+                console.error("Error parsing bookmarks file:", error);
+                reject(error); // reject the promise with the parsing error
             }
         };
 
-        //Includes error handling
-        reader.onload = (error) => reject(error);
+        // Handles file reading errors
+        reader.onerror = (error) => {
+            console.error("Error reading file:", error);
+            reject(error); // reject the promise with the file reading error
+        };
+        
         reader.readAsText(file)
 
 
